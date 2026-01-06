@@ -2,7 +2,7 @@
 > **Attention Is All You Need** 논문을 기반으로 Transformer를 PyTorch로 처음부터 구현하고, 핵심 개념을 6단계로 설명합니다.
 
 <p align="center">
-  <img src="assets/transformer_thumbnail.png" alt="Transformer Architecture" width="700">
+  <img src="transformer_architecture.jpg" alt="Transformer Architecture" width="350">
 </p>
 
 <p align="center">
