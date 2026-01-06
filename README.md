@@ -16,7 +16,7 @@ arXiv: https://arxiv.org/abs/1706.03762
 
 <br>
 <p align="left">
-  <img src="transformer_architecture.jpg" alt="Transformer Architecture" width="350">
+  <img src="assets/transformer_architecture.jpg" alt="Transformer Architecture" width="350">
 </p>
 
 <p align="left">
@@ -278,7 +278,7 @@ for _ in range(epoch):
 
 ### result
 <p align="center">
-  <img src="다운로드.png" alt="Transformer Architecture">
+  <img src="assets/loss.png" alt="Transformer Architecture">
 </p>
 
 
