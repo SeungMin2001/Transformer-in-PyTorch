@@ -24,7 +24,7 @@ arXiv: https://arxiv.org/abs/1706.03762
 </p>
 
 ---
-## Step 1. DataSet
+## Step 1. Dataset
 
 ```python
 #data 로드
@@ -37,7 +37,8 @@ train_en=train['en']
 train_de=train['de']
 ```
 
-## Step 2. Tokenize
+## Step 2. Tokenizer
+I use Hugging Face Transformers – AutoTokenizer
 
 ```py
 # tokenizer 설정
@@ -65,6 +66,14 @@ def collate_fn(batch):
 # 리스트화
 res=[k for k in train]
 ```
+<br>
+
+<p align="left">
+  <img src="assets/embedding.jpg" alt="Transformer Architecture" width="350">
+</p>
+<br>
+embedding + positional encoding
+
 ```py
 class TokenEmbedding(nn.Module):
   def __init__(self,vocab_size: int, d_model: int):
@@ -90,8 +99,18 @@ class TokenEmbedding(nn.Module):
 
     return embedding_input_ids+pe
 ```
+<br>
 
 ## Step 3. Attention
+
+<p align="left">
+  <img src="assets/attention.jpg" alt="Transformer Architecture" width="350">
+</p>
+<br>
+
+attention in encoding, attention in decoding, encoding+decoding attention in decoding
+(B,T,d_model) -> (B,T,d_model) same dimention
+<br>
 
 ```py
 class Attention(nn.Module):
@@ -138,6 +157,8 @@ class Attention(nn.Module):
 ```
 
 ## Step 4. FFW
+FeedForward 512->2048->512 <br>
+I use ReLU of activate function
 
 ```py
 class FeedForward(nn.Module):
@@ -164,6 +185,8 @@ class FeedForward(nn.Module):
 ```
 
 ## Step 5. modeling
+nx=6 in paper <br>
+=> encoding * 6, decoding * 6<br>
 
 ```py
 class transformer(nn.Module):
@@ -276,7 +299,8 @@ for _ in range(epoch):
 
 ```
 
-### result
+## Step 7. result
+### traing loss curve is
 <p align="center">
   <img src="assets/loss.png" alt="Transformer Architecture">
 </p>
