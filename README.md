@@ -271,7 +271,7 @@ for _ in range(epoch):
 
 ### result
 <p align="center">
-  <img src="transformer_architecture.jpg" alt="Transformer Architecture">
+  <img src="다운로드.png" alt="Transformer Architecture">
 </p>
 
 
