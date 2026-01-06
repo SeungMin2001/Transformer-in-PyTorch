@@ -1,6 +1,24 @@
 # Transformer (PyTorch)
-> **Attention Is All You Need** 논문을 기반으로 Transformer를 PyTorch로 처음부터 구현 <br>
 > A PyTorch implementation of the Transformer built from scratch, based on **Attention Is All You Need**.
+
+
+## Paper Reference
+
+This implementation is based on the following paper:
+
+> **Attention Is All You Need**  
+> Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit,  
+> Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin  
+> *Advances in Neural Information Processing Systems (NeurIPS), 2017*
+
+arXiv: https://arxiv.org/abs/1706.03762
+
+The model architecture, attention mechanism, positional encoding,
+and normalization strategies are implemented in accordance with the
+original paper.
+
+
+
 <br>
 <p align="left">
   <img src="transformer_architecture.jpg" alt="Transformer Architecture" width="350">
@@ -13,8 +31,6 @@
 ---
 
 ## Overview
-- 이 레포지토리는 Vaswani et al.(2017)의 *Attention Is All You Need* 논문을 바탕으로 Transformer의 핵심 구성 요소를 PyTorch로 구현한 코드입니다.
-
 - This repository provides a PyTorch implementation of the core components of the Transformer, based on Attention Is All You Need (Vaswani et al., 2017).
 ---
 
