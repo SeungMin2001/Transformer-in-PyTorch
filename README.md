@@ -69,10 +69,11 @@ res=[k for k in train]
 <br>
 
 <p align="left">
-  <img src="assets/embedding.jpg" alt="Transformer Architecture" width="350">
+  <img src="assets/embedding.jpg" alt="Transformer Architecture" width="550">
 </p>
 <br>
 embedding + positional encoding
+<br>
 
 ```py
 class TokenEmbedding(nn.Module):
@@ -104,11 +105,11 @@ class TokenEmbedding(nn.Module):
 ## Step 3. Attention
 
 <p align="left">
-  <img src="assets/attention.png" alt="Transformer Architecture" width="350">
+  <img src="assets/attention.png" alt="Transformer Architecture" width="550">
 </p>
 <br>
 
-attention in encoding, attention in decoding, encoding+decoding attention in decoding
+attention in encoding, attention in decoding, encoding+decoding attention in decoding <br>
 (B,T,d_model) -> (B,T,d_model) same dimention
 <br>
 
@@ -159,11 +160,12 @@ class Attention(nn.Module):
 ## Step 4. FFW
 
 <p align="left">
-  <img src="assets/FFW.png" alt="Transformer Architecture" width="350">
+  <img src="assets/FFW.png" alt="Transformer Architecture" width="550">
 </p><br>
 
 FeedForward 512->2048->512 <br>
 I use ReLU of activate function
+<br>
 
 ```py
 class FeedForward(nn.Module):
