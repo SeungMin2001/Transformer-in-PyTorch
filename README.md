@@ -13,11 +13,6 @@ This implementation is based on the following paper:
 
 arXiv: https://arxiv.org/abs/1706.03762
 
-The model architecture, attention mechanism, positional encoding,
-and normalization strategies are implemented in accordance with the
-original paper.
-
-
 
 <br>
 <p align="left">
