@@ -1,6 +1,15 @@
 # Transformer (PyTorch)
 > A PyTorch implementation of the Transformer built from scratch, based on **Attention Is All You Need**.
 
+<br>
+<p align="left">
+  <img src="assets/transformer_architecture.jpg" alt="Transformer Architecture" width="350">
+</p>
+<p align="left">
+  <em>Figure. Transformer Architecture</em>
+</p>
+
+<br>
 
 ## Paper Reference
 
@@ -12,16 +21,9 @@ This implementation is based on the following paper:
 > *Advances in Neural Information Processing Systems (NeurIPS), 2017*
 
 arXiv: https://arxiv.org/abs/1706.03762
-
-
 <br>
-<p align="left">
-  <img src="assets/transformer_architecture.jpg" alt="Transformer Architecture" width="350">
-</p>
 
-<p align="left">
-  <em>Figure. Transformer Architecture</em>
-</p>
+
 <br>
 
 ---
