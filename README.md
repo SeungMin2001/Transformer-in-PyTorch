@@ -271,8 +271,16 @@ device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 loader = DataLoader(res, batch_size=128, shuffle=True, collate_fn=collate_fn)
-epoch=100
+valid_loader = DataLoader(valid, batch_size=128, shuffle=False, collate_fn=collate_fn)
+test_loader = DataLoader(test, batch_size=128, shuffle=False, collate_fn=collate_fn)
+
+device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+
+epoch=10
 train_loss=[]
+valid_loss=[]
+v_loss=[]
 
 optimizer=torch.optim.Adam(
     model.parameters(),
@@ -283,15 +291,18 @@ optimizer=torch.optim.Adam(
 vocab_size=tokenizer.vocab_size
 criterion=nn.CrossEntropyLoss(ignore_index=0)
 
-for _ in range(epoch):
+for i in range(epoch):
   model.train()
   total_loss=0
-  for enc,dec in loader:
+
+  progress_bar = tqdm(loader, desc=f"Epoch {i+1}/{epoch}", leave=True)
+
+  for enc,dec in progress_bar:
 
 
     input_ids_enc = {k: v.to(device) for k, v in enc.items()}
     input_ids_dec = {k: v.to(device) for k, v in dec.items()}
-    
+
     #input_ids_enc = enc["input_ids"] #encoder
     #attention_mask_enc = enc["attention_mask"]
 
@@ -312,18 +323,53 @@ for _ in range(epoch):
     loss.backward()
     optimizer.step()
 
-    #train_loss.append(loss.item())
-    total_loss+=loss.item()
+    train_loss.append(loss.item())
+    #total_loss+=loss.item()
 
-  avg_loss=total_loss/len(loader)
-  train_loss.append(avg_loss)
+  #avg_loss=total_loss/len(loader)
+  #train_loss.append(avg_loss)
 
+  v_loss.append(eval_loss(model, valid_loader, criterion, vocab_size, device, pad_id=0))
+  #valid_loss.append(v_loss)
+  
+
+
+```
+
+
+### valid loss function
+```py
+criterion=nn.CrossEntropyLoss(ignore_index=0)
+
+def eval_loss(model, loader, criterion, vocab_size, device, pad_id=0):
+    model.eval()
+    total_loss = 0.0
+
+    with torch.no_grad():
+        for enc, dec in loader:
+            input_ids_enc = {k: v.to(device) for k, v in enc.items()}
+            input_ids_dec = {k: v.to(device) for k, v in dec.items()}
+
+            tgt_in  = input_ids_dec["input_ids"][:, :-1]
+            tgt_out = input_ids_dec["input_ids"][:,  1:]
+
+            logits = model(input_ids_enc["input_ids"], tgt_in)  # [B, T-1, V]
+
+            # sum loss over all non-pad tokens
+            loss = criterion(
+                logits.reshape(-1, vocab_size),
+                tgt_out.reshape(-1)
+            )
+            #total_loss += loss.item()
+            valid_loss.append(loss.item())
+
+    #avg_loss = total_loss / len(loader)
+    return valid_loss
 ```
 <br>
 
----
+## Step 7. Evaluate
 
-## Step 7. evaluate
 ### traing loss curve is
 <p align="center">
   <img src="assets/loss.png" alt="Transformer Architecture">
