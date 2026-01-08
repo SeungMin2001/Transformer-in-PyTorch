@@ -323,10 +323,13 @@ for _ in range(epoch):
 
 ---
 
-## Step 7. result
+## Step 7. evaluate
 ### traing loss curve is
 <p align="center">
   <img src="assets/loss.png" alt="Transformer Architecture">
 </p>
+<br>
+
+### BLEU score
 
 
