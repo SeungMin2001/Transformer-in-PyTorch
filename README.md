@@ -370,7 +370,7 @@ def eval_loss(model, loader, criterion, vocab_size, device, pad_id=0):
 
 ## Step 7. Evaluate
 
-### traing loss curve is
+### traing loss(train,valid) curve is
 <p align="center">
   <img src="assets/loss.png" alt="Transformer Architecture">
 </p>
