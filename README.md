@@ -372,7 +372,7 @@ def eval_loss(model, loader, criterion, vocab_size, device, pad_id=0):
 
 ### traing loss(train,valid) curve is
 <p align="center">
-  <img src="assets/loss.png" alt="Transformer Architecture">
+  <img src="assets/comparison.png" alt="Transformer Architecture">
 </p>
 <br>
 
